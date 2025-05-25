@@ -6,6 +6,7 @@ std::string Entitate::getnume() const { return nume; }
 int Entitate::getviata() const { return viata; }
 int Entitate::getputere() const { return putere; }
 void Entitate::setputere(int s) { putere = s;}
+void Entitate::setviata(int v) { viata = v; }
 void Entitate::ranire(int contorranire) {
     viata -= contorranire;
     if (viata <= 0) viata = 0;
@@ -16,7 +17,7 @@ void Entitate::atac(Entitate &ent) {
     std::cout << ent.getnume() << " mai are " << ent.getviata() << " viata" << std::endl;
 }
 
-// Jucator
+
 Jucator::Jucator(std::string n, int h, int s, int a) : Entitate(n, h, s), inventar(10), agilitate(a) {}
 Jucator::Jucator() : Entitate("", 100, 10), inventar(10), agilitate(3) {}
 int Jucator::getagilitate() const { return agilitate; }
@@ -50,7 +51,7 @@ std::istream& operator>>(std::istream& is, Jucator& e) {
 }
 Jucator::~Jucator() { std::cout << "Jucatorul a fost distrus" << std::endl; }
 
-// Inamic
+
 Inamic::Inamic(std::string n, int h, int s) : Entitate(n, h, s) {}
 Inamic::Inamic(const Inamic& copie) : Entitate(copie) {}
 Inamic& Inamic::operator=(const Inamic& copie) {

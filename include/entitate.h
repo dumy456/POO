@@ -16,6 +16,7 @@ public:
     int getviata() const;
     int getputere() const;
     void setputere( int s);
+    void setviata(int v);
     void ranire(int contorranire);
     virtual void atac(Entitate &ent);
     virtual ~Entitate() = default;
@@ -23,10 +24,10 @@ public:
 
 class Jucator : public Entitate {
 private:
-    int agilitate;
-    Inventar<Obiect> inventar;
+Inventar<Obiect> inventar;
+int agilitate;
 public:
-    Jucator(std::string n, int h, int s, int a);
+    Jucator(std::string n, int h, int s,int a);
     Jucator();
     int getagilitate() const;
     Inventar<Obiect>& getinventar();

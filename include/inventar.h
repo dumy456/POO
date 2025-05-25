@@ -7,8 +7,8 @@
 template <typename T>
 class Inventar {
 private:
-    std::vector<std::unique_ptr<T>> obiecte;
-    int capacitatemaxima;
+std::vector<std::unique_ptr<T>> obiecte;
+int capacitatemaxima;
 public:
     Inventar(int c);
     int getcapacitatemaxima() const;
