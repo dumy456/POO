@@ -1,2 +1,20 @@
-5
-11 22 33 44 55
+NumeJucator
+informatii
+inventar
+echipare SabieMagica         // armă inexistentă
+echipare Sabie               // armă existentă
+echipare Sabie               // echipare aceeași armă de mai multe ori (testează limita)
+echipare Scimitar            // altă armă existentă
+echipare Scimitar            // depășește limita de arme echipate
+foloseste PotiuneMagica      // poțiune inexistentă
+foloseste Potiune            // poțiune existentă
+foloseste Potiune            // folosește aceeași poțiune de mai multe ori (testează scăderea numărului)
+foloseste Potiune2           // altă poțiune existentă
+foloseste Potiune2           // folosește până se termină
+foloseste Potiune2           // încearcă să folosești după ce nu mai există
+mers nord                    // direcție validă
+mers sud                     // direcție validă
+mers est                     // direcție inexistentă
+batalie                      // începe o bătălie
+zbor                         // comandă invalidă
+oprire                       // oprește jocul
