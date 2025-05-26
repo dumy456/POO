@@ -57,7 +57,7 @@ void Joc::start(){
         while(ok==0){
             int validarecomanda=0;
             contor++;
-            if(contor>1000)
+            if(contor>40)
             {
                 std::cout<<"Ai murit de extenuare de la atatea actiuni"<<std::endl;
                 jucator1.setviata(0);
