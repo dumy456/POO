@@ -41,10 +41,6 @@ void Joc::start(){
         Actiune actiuni;
         std::string comanda;
         int armeechipate=0;
-        int batuturs=0;
-        int batutstrigoi=0;;
-        int batutturneu=0;
-        int batutrege=0;
         int ascultatrege=0;
         int dezbaterea=0;
         int finalfericit=0;
@@ -57,7 +53,8 @@ void Joc::start(){
         std::cout<<"Daca vrei sa folosesti potiunea, scrie 'foloseste'."<<std::endl;
         std::cout<<"Daca vrei sa vezi inventarul, scrie 'inventar'."<<std::endl;
         int validarecomanda=0;
-        while(true){
+        int ok=0;
+        while(ok==0){
             validarecomanda=0;
             if(locatiecurenta->getnume()=="Castelul Impunator" && dezbaterea==1 && demon.getviata()>0)
             {
@@ -131,7 +128,6 @@ void Joc::start(){
                 actiuni.batalie(jucator1,rege);      
                 if(rege.getviata()==0)
                 {
-                    batutrege=1;
                     jucator1.setviata(0);
                 }
             }
@@ -156,7 +152,6 @@ void Joc::start(){
                 actiuni.batalie(jucator1, rege);
                 if(rege.getviata()==0)
                 {
-                    batutrege=1;
                     finalfericit=1;
                     jucator1.setviata(0);
                 }
@@ -174,7 +169,6 @@ void Joc::start(){
                 actiuni.batalie(jucator1,strigoi);      
                 if(strigoi.getviata()==0)
                 {
-                    batutstrigoi=1;
                     locatiecurenta->setdescriere("Te afli in Padurea Strigoilor, dar acum este mai linistita.");
                     std::cout<<"Ai invins strigoiul!"<<std::endl;
                     std::cout<<"Te simti mai rezistent."<<std::endl;
@@ -191,7 +185,6 @@ void Joc::start(){
                 actiuni.batalie(jucator1,urs);      
                 if(urs.getviata()==0)
                 {
-                    batuturs=1;
                     locatiecurenta->setdescriere("Te afli in Pestera Ursului, dar acum este mai linistita.");
                     std::cout<<"Ai invins ursul!"<<std::endl;
                     std::cout<<"Te simti mai rezistent."<<std::endl;
@@ -217,7 +210,6 @@ void Joc::start(){
                     std::cout<<"Gasesti pe jos o potiune de viata mare si o sabie de diamant."<<std::endl;
                     jucator1.getinventar().adaugaobiect(std::make_unique<Potiune>("Potiune de viata mare", 1, 50));
                     jucator1.getinventar().adaugaobiect(std::make_unique<Arma>("Sabie de diamant", 1, 30));
-                    batutturneu=1;
                     locatiecurenta->setdescriere("Te afli in Tabara Banditilor, dar acum este mai linistita.");
                 }
             }
@@ -319,18 +311,16 @@ void Joc::start(){
             }
             if(comanda=="dezechipare")
             {
-
+                validarecomanda=1;
                 if(armeechipate>0)
                 {
                     jucator1.setputere(10);
                     armeechipate--;
                     std::cout<<"Arma a fost distrusa!"<<std::endl;
-                    validarecomanda=1;
                 }
                 else
                 {
                     std::cout<<"Nu ai nicio arma echipata!"<<std::endl;
-                    validarecomanda=1;
                 }
             }   
             if(comanda=="foloseste")
@@ -408,7 +398,7 @@ void Joc::start(){
             }
             if(jucator1.getviata()==0)
             {
-                if(batutrege==1)
+                if(rege.getviata()==0)
                 {
                     if(finalfericit==1)
                     {
@@ -420,29 +410,29 @@ void Joc::start(){
                         std::cout<<"Totul e bine cand se termina cu bine!"<<std::endl;
                         std::cout<<"Multumesc ca ai jucat jocul!"<<std::endl;
                     }
-                }else if(batutrege==0){
+                }else if(rege.getviata()>0){
                     std::cout<<"Ai murit!"<<std::endl;
                     std::cout<<"Sfarsitul jocului!"<<std::endl;
                     std::cout<<"Multumesc ca ai jucat jocul!"<<std::endl;
                 }
-                if(batutturneu==1)
+                if(bandit3.getviata()==0)
                 {
                     std::cout<<"Ai terminat turneul si ai devenit Ucigasul de Banditi!"<<std::endl;
                 }
-                if(batutstrigoi==1)
+                if(strigoi.getviata()==0)
                 {
                     std::cout<<"Ai invins strigoiul si ai adus liniste in padure!"<<std::endl;
                 }
-                if(batuturs==1)
+                if(urs.getviata()==0)
                 {
                     std::cout<<"Ai invins ursul si ai adus liniste in pestera!"<<std::endl;
                 }
-                if(finalfericit==1&& batutstrigoi==1 && batuturs==1 && batutturneu==1)
+                if(finalfericit==1&& strigoi.getviata()==0 && urs.getviata()==0 && bandit3.getviata()==0)
                 {
                     std::cout<<"Ai reusit sa invingi toti inamicii!"<<std::endl;
                     std::cout<<"Ai doborat "<<Inamic::getnumar_inamici()<<" inamici!"<<std::endl;
                 }
-                break;
+                ok=1;
             }
             if (validarecomanda==0) {
                 std::cout<<"Comanda invalida!"<<std::endl;
