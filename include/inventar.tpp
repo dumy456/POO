@@ -9,7 +9,7 @@ template <typename T>
 std::vector<std::unique_ptr<T>>& Inventar<T>::getobiecte() { return obiecte; }
 
 template <typename T>
-bool Inventar<T>::esteplin() const { return obiecte.size() >= capacitatemaxima; }
+bool Inventar<T>::esteplin() const { return obiecte.size() >= static_cast<size_t> (capacitatemaxima); }
 
 template <typename T>
 void Inventar<T>::adaugaobiect(std::unique_ptr<T> ob) {

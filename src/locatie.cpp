@@ -12,7 +12,7 @@ void Locatie::textdescriere() const {
     std::cout << descriere << std::endl;
 }
 int Locatie::setvizitat() {
-    vizitat=1;
+    vizitat++;
     return vizitat;
 }
 int Locatie::getvizitat()const{

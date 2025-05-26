@@ -1,5 +1,5 @@
 #include "entitate.h"
-
+#include "eroarenume.h"
 Entitate::Entitate(std::string n, int h, int s) : nume(n), viata(h), putere(s) {}
 Entitate::Entitate() = default;
 std::string Entitate::getnume() const { return nume; }
@@ -22,7 +22,6 @@ Jucator::Jucator(std::string n, int h, int s, int a) : Entitate(n, h, s), invent
 Jucator::Jucator() : Entitate("", 100, 10), inventar(10), agilitate(3) {}
 int Jucator::getagilitate() const { return agilitate; }
 Inventar<Obiect>& Jucator::getinventar() { return inventar; }
-const Inventar<Obiect>& Jucator::getinventar() const { return inventar; }
 void Jucator::atac(Entitate &ent) {
     std::cout << nume << " ataca " << ent.getnume() << std::endl;
     ent.ranire(putere);
@@ -36,9 +35,9 @@ void Jucator::echiparearma(const Arma& arma) {
     putere += arma.getputerebonus();
     std::cout << "Ai echipat " << arma.getnume() << " (+" << arma.getputerebonus() << " putere). Putere curenta: " << putere << "\n";
 }
-void Jucator::folosestePotiune(const Potiune& potiune) {
+void Jucator::folosestePotiune(const Potiune& potiune, int viatamax) {
     viata += potiune.getviatavindecata();
-    if (viata > 100) viata = 100;
+    if (viata > viatamax) viata = viatamax;
     std::cout << "Ai folosit " << potiune.getnume() << " (+" << potiune.getviatavindecata() << " viata). Viata curenta: " << viata << "\n";
 }
 std::ostream& operator<<(std::ostream& os, const Jucator& e) {
@@ -46,13 +45,19 @@ std::ostream& operator<<(std::ostream& os, const Jucator& e) {
     return os;
 }
 std::istream& operator>>(std::istream& is, Jucator& e) {
-    std::cout << "Nume: "; is >> e.nume;
+    std::cout << "Nume: ";
+    std::getline(is, e.nume);
+    if (e.nume.find_first_not_of(" \t\n\r") == std::string::npos)
+        throw Eroarenume("Numele jucatorului nu poate fi gol!");
+
     return is;
 }
+
+
 Jucator::~Jucator() { std::cout << "Jucatorul a fost distrus" << std::endl; }
 
-
-Inamic::Inamic(std::string n, int h, int s) : Entitate(n, h, s) {}
+int Inamic::numar_inamici = 0;
+Inamic::Inamic(std::string n, int h, int s) : Entitate(n, h, s) { numar_inamici++; }
 Inamic::Inamic(const Inamic& copie) : Entitate(copie) {}
 Inamic& Inamic::operator=(const Inamic& copie) {
     if (this != &copie) {
@@ -61,6 +66,9 @@ Inamic& Inamic::operator=(const Inamic& copie) {
         putere = copie.putere;
     }
     return *this;
+}
+int Inamic::getnumar_inamici() {
+    return numar_inamici;
 }
 void Inamic::atac(Entitate &ent) {
     std::cout << nume << " contraataca " << ent.getnume() << std::endl;

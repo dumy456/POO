@@ -20,6 +20,10 @@ void Actiune::batalie(Jucator &jucator, Inamic &inamic) {
             std::cout << jucator.getnume() << " a fost invins!" << std::endl;
             break;
         }
+        if(inamic.getnume() == "Rege") {
+            if(inamic.getviata()<=100 && inamic.getviata()>=65)
+            std::cout << "'Nu te voi lasa sa distrugi regatul meu!' striga regele" << std::endl;
+        }
     }
 }
 Actiune::~Actiune() { std::cout << "Actiune a fost distrus" << std::endl; }

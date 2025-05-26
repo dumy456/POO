@@ -34,17 +34,20 @@ public:
     const Inventar<Obiect>& getinventar() const;
     void atac(Entitate &ent) override;
     void echiparearma(const Arma& arma);
-    void folosestePotiune(const Potiune& potiune);
+    void folosestePotiune(const Potiune& potiune,int viatamax);
     friend std::ostream& operator<<(std::ostream& os, const Jucator& e);
     friend std::istream& operator>>(std::istream& is, Jucator& e);
     ~Jucator();
 };
 
 class Inamic : public Entitate {
+    private:
+    static int numar_inamici;
 public:
     Inamic(std::string n, int h, int s);
     Inamic(const Inamic& copie);
     Inamic& operator=(const Inamic& copie);
+    static int getnumar_inamici();
     void atac(Entitate &ent) override;
     ~Inamic();
 };
