@@ -476,14 +476,13 @@ int main()
                     {
                         std::cout<<"Ai reusit sa il invingi pe rege si ai oprit tirania sa! Regatul este salvat!"<<std::endl;
                         std::cout<<"Felicitari! Ai terminat jocul cu final fericit!"<<std::endl;
-                    }
-                    else
-                    {
+                        std::cout<<"Multumesc ca ai jucat jocul!"<<std::endl;
+                    }else if(finalfericit==0){
                         std::cout<<"Nu ai respectat dorintele regelui si ai decis sa te lupti cu el. Ai reusit sa il invingi si in absenta lui haosul din regat dispare."<<std::endl;
                         std::cout<<"Totul e bine cand se termina cu bine!"<<std::endl;
+                        std::cout<<"Multumesc ca ai jucat jocul!"<<std::endl;
                     }
-                }
-                else{
+                }else if(batutrege==0){
                     std::cout<<"Ai murit!"<<std::endl;
                     std::cout<<"Sfarsitul jocului!"<<std::endl;
                     std::cout<<"Multumesc ca ai jucat jocul!"<<std::endl;
@@ -503,6 +502,7 @@ int main()
                 if(finalfericit==1&& batutstrigoi==1 && batuturs==1 && batutturneu==1)
                 {
                     std::cout<<"Ai reusit sa invingi toti inamicii!"<<std::endl;
+                    std::cout<<"Ai doborat"<<Inamic::getnumar_inamici()<<" inamici!"<<std::endl;
                 }
                 break;
             }

@@ -1,20 +1,143 @@
-NumeJucator
-informatii
-inventar
-echipare SabieMagica         // armă inexistentă
-echipare Sabie               // armă existentă
-echipare Sabie               // echipare aceeași armă de mai multe ori (testează limita)
-echipare Scimitar            // altă armă existentă
-echipare Scimitar            // depășește limita de arme echipate
-foloseste PotiuneMagica      // poțiune inexistentă
-foloseste Potiune            // poțiune existentă
-foloseste Potiune            // folosește aceeași poțiune de mai multe ori (testează scăderea numărului)
-foloseste Potiune2           // altă poțiune existentă
-foloseste Potiune2           // folosește până se termină
-foloseste Potiune2           // încearcă să folosești după ce nu mai există
-mers nord                    // direcție validă
-mers sud                     // direcție validă
-mers est                     // direcție inexistentă
-batalie                      // începe o bătălie
-zbor                         // comandă invalidă
-oprire                       // oprește jocul
+//Good ending
+Nume
+mers nord
+batalie
+echipare Sabie de lemn
+mers est
+batalie
+dezechipare
+echipare Sabie de fier
+mers vest
+mers vest
+mers est
+mers sud
+mers sud
+batalie
+foloseste Potiune de viata
+foloseste Potiune de viata
+batalie
+dezechipare
+echipare Sabie de argint
+foloseste Apa vindecatoare
+batalie
+dezechipare
+echipare Sabie de diamant
+mers nord
+mers est
+mers est
+mers usa
+ingenuncheaza
+mers usa
+mers vest
+mers vest
+mers est
+mers est
+batalie
+dezechipare
+echipare Gheara de demon
+mers usa
+batalie
+
+//Bad ending
+Nume
+mers nord
+batalie
+echipare Sabie de lemn
+mers est
+batalie
+dezechipare
+echipare Sabie de fier
+mers vest
+mers vest
+mers est
+mers sud
+mers sud
+batalie
+foloseste Potiune de viata
+foloseste Potiune de viata
+batalie
+dezechipare
+echipare Sabie de argint
+foloseste Apa vindecatoare
+batalie
+dezechipare
+echipare Sabie de diamant
+mers nord
+mers est
+mers est
+mers usa
+batalie
+
+//Lasitate
+Nume
+mers nord
+batalie
+echipare Sabie de lemn
+mers est
+batalie
+dezechipare
+echipare Sabie de fier
+mers vest
+mers vest
+mers est
+mers sud
+mers sud
+batalie
+foloseste Potiune de viata
+foloseste Potiune de viata
+batalie
+dezechipare
+echipare Sabie de argint
+foloseste Apa vindecatoare
+batalie
+dezechipare
+echipare Sabie de diamant
+mers nord
+mers est
+mers est
+mers usa
+ingenuncheaza
+mers usa
+mers vest
+mers vest
+mers est
+mers est
+mers usa
+
+//Sacrificiu
+Nume
+mers nord
+batalie
+echipare Sabie de lemn
+mers est
+batalie
+dezechipare
+echipare Sabie de fier
+mers vest
+mers vest
+mers est
+mers sud
+mers sud
+batalie
+foloseste Potiune de viata
+foloseste Potiune de viata
+batalie
+dezechipare
+echipare Sabie de argint
+foloseste Apa vindecatoare
+batalie
+dezechipare
+echipare Sabie de diamant
+mers nord
+mers est
+mers est
+mers usa
+ingenuncheaza
+mers usa
+mers vest
+mers vest
+sacrificiu
+
+//Eroare Nume
+
+
