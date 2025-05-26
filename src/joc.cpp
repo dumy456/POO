@@ -54,14 +54,10 @@ void Joc::start(){
         std::cout<<"Daca vrei sa vezi inventarul, scrie 'inventar'."<<std::endl;
         int ok=0;
         int contor=0;
+        int contorinvalid=0;
         while(ok==0){
             int validarecomanda=0;
             contor++;
-            if(contor>40)
-            {
-                std::cout<<"Ai murit de extenuare de la atatea actiuni"<<std::endl;
-                jucator1.setviata(0);
-            }
             if(locatiecurenta->getnume()=="Castelul Impunator" && dezbaterea==1 && demon.getviata()>0)
             {
                 std::cout<<"'Nu trebuia sa te intorci aici! Nu ai respectat dorintele regelui! Acum vei muri!' striga un demon."<<std::endl;
@@ -111,7 +107,10 @@ void Joc::start(){
                 std::cout<<"Daca vrei sa participi, scrie 'batalie'."<<std::endl;
             }
             std::cout<<"Actiunea ta este ";
-            std::cin>>comanda;           
+            if (!(std::cin >> comanda)) {
+                std::cout << "Eroare la citirea comenzii sau sfarsit de input. Jocul se opreste automat." << std::endl;
+                break;
+            }           
             if(comanda=="sacrificiu" && dezbaterea==1 && locatiecurenta->getnume()=="Campia Inceputurilor")
             {
                 validarecomanda=1;
@@ -402,6 +401,11 @@ void Joc::start(){
                 std::cout<<"Inventarul tau este: "<<std::endl;
                 jucator1.getinventar().afisareinventar();
             }
+            if(contor>40)
+            {
+                std::cout<<"Ai murit de extenuare de la atatea actiuni"<<std::endl;
+                jucator1.setviata(0);
+            }
             if(jucator1.getviata()==0)
             {
                 if(rege.getviata()==0)
@@ -442,6 +446,12 @@ void Joc::start(){
             }
             if (validarecomanda==0) {
                 std::cout<<"Comanda invalida!"<<std::endl;
+                contorinvalid++;
+                if(contorinvalid>5)
+                {
+                    std::cout<<"Ai introdus prea multe comenzi invalide. Jocul se opreste."<<std::endl;
+                    ok=1;   
+                }
             }
             
         }
