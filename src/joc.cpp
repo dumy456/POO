@@ -52,10 +52,16 @@ void Joc::start(){
         std::cout<<"Daca vrei sa echipezi sabia, scrie 'echipare'."<<std::endl;
         std::cout<<"Daca vrei sa folosesti potiunea, scrie 'foloseste'."<<std::endl;
         std::cout<<"Daca vrei sa vezi inventarul, scrie 'inventar'."<<std::endl;
-        int validarecomanda=0;
         int ok=0;
+        int contor=0;
         while(ok==0){
-            validarecomanda=0;
+            int validarecomanda=0;
+            contor++;
+            if(contor>1000)
+            {
+                std::cout<<"Ai murit de extenuare de la atatea actiuni"<<std::endl;
+                jucator1.setviata(0);
+            }
             if(locatiecurenta->getnume()=="Castelul Impunator" && dezbaterea==1 && demon.getviata()>0)
             {
                 std::cout<<"'Nu trebuia sa te intorci aici! Nu ai respectat dorintele regelui! Acum vei muri!' striga un demon."<<std::endl;
@@ -105,7 +111,7 @@ void Joc::start(){
                 std::cout<<"Daca vrei sa participi, scrie 'batalie'."<<std::endl;
             }
             std::cout<<"Actiunea ta este ";
-            std::cin>>comanda;
+            std::cin>>comanda;           
             if(comanda=="sacrificiu" && dezbaterea==1 && locatiecurenta->getnume()=="Campia Inceputurilor")
             {
                 validarecomanda=1;
@@ -272,8 +278,8 @@ void Joc::start(){
                 std::string numearma;
                 std::getline(std::cin >> std::ws, numearma);
                 auto& obiecte=jucator1.getinventar().getobiecte();
-                int armagasita=0;
                 if(armeechipate<1){
+                    int armagasita=0;
 
                     for(size_t i=0;i<obiecte.size();i++)
                     {
