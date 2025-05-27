@@ -1,4 +1,4 @@
-Dumy
+Nume
 mers nord
 batalie
 echipare Sabie de lemn
@@ -11,14 +11,14 @@ mers vest
 mers est
 mers sud
 mers sud
-batalie
+turneu
 foloseste Potiune de viata
 foloseste Potiune de viata
-batalie
+continua
 dezechipare
 echipare Sabie de argint
 foloseste Apa vindecatoare
-batalie
+continua
 dezechipare
 echipare Sabie de diamant
 mers nord
