@@ -1,8 +1,8 @@
 #include "entitate.h"
 #include "eroarenume.h"
 Entitate::Entitate(std::string n, int h, int s) : nume(n), viata(h), putere(s) {}
-Entitate::Entitate() = default;
-std::string Entitate::getnume() const { return nume; }
+Entitate::Entitate() : viata(0), putere(0){}
+const std::string& Entitate::getnume() const { return nume; }
 int Entitate::getviata() const { return viata; }
 void Entitate::setputere(int s) { putere = s;}
 void Entitate::setviata(int v) { viata = v; }
@@ -15,9 +15,12 @@ void Entitate::atac(Entitate &ent) {
     ent.ranire(putere);
     std::cout << ent.getnume() << " mai are " << ent.getviata() << " viata" << std::endl;
 }
+Entitate::~Entitate(){
+    std::cout << "Entitatea a fost distrusa" << std::endl;
+};
 
 
-Jucator::Jucator(std::string n, int h, int s, int a) : Entitate(n, h, s), inventar(10), agilitate(a) {}
+Jucator::Jucator(const std::string& n, int h, int s, int a) : Entitate(n, h, s), inventar(10), agilitate(a) {}
 Jucator::Jucator() : Entitate("", 100, 10), inventar(10), agilitate(3) {}
 Inventar<Obiect>& Jucator::getinventar() { return inventar; }
 void Jucator::atac(Entitate &ent) {
@@ -52,10 +55,8 @@ std::istream& operator>>(std::istream& is, Jucator& e) {
 }
 
 
-Jucator::~Jucator() { std::cout << "Jucatorul a fost distrus" << std::endl; }
-
 int Inamic::numar_inamici = 0;
-Inamic::Inamic(std::string n, int h, int s) : Entitate(n, h, s) { numar_inamici++; }
+Inamic::Inamic(const std::string& n, int h, int s) : Entitate(n, h, s) { numar_inamici++; }
 Inamic::Inamic(const Inamic& copie) : Entitate(copie) {}
 Inamic& Inamic::operator=(const Inamic& copie) {
     if (this != &copie) {
@@ -73,4 +74,3 @@ void Inamic::atac(Entitate &ent) {
     ent.ranire(putere);
     std::cout << ent.getnume() << " mai are " << ent.getviata() << " viata" << std::endl;
 }
-Inamic::~Inamic() { std::cout << "Inamicul a fost distrus" << std::endl; }

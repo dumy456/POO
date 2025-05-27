@@ -2,7 +2,7 @@
 #include "joc.h"
 
 
-void Joc::final(Inamic &rege, Inamic &strigoi, Inamic &urs, Inamic &bandit3, int finalfericit) {
+void Joc::final(const Inamic &rege,const Inamic &strigoi,const Inamic &urs,const Inamic &bandit3, int finalfericit) {
     if(rege.getviata()==0)
                 {
                     if(finalfericit==1)

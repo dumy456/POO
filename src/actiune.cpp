@@ -1,10 +1,10 @@
 #include "actiune.h"
 #include <iostream>
 
-void Actiune::aratalocatiecurenta(Locatie* locatiecurenta) const {
+void Actiune::aratalocatiecurenta(const Locatie* locatiecurenta) const {
     locatiecurenta->textdescriere();
 }
-int Actiune::miscajucator(std::string directie, Locatie* locatiecurenta) const {
+int Actiune::miscajucator(const std::string& directie, Locatie* locatiecurenta) const {
     if (locatiecurenta->getiesire(directie) == NULL) return 0;
     else return 1;
 }
@@ -126,15 +126,15 @@ void Actiune::inventar(Jucator &jucator1) {
         }
     }
     std::sort(obiecte.begin(), obiecte.end(), [](const std::unique_ptr<Obiect>& a, const std::unique_ptr<Obiect>& b) {
-        if (auto armaA = dynamic_cast<Arma*>(a.get())) {
-                if (auto armaB = dynamic_cast<Arma*>(b.get())) {
+        if (auto armaA = dynamic_cast<const Arma*>(a.get())) {
+                if (auto armaB = dynamic_cast<const Arma*>(b.get())) {
                     return armaA->getputerebonus() > armaB->getputerebonus();
                 } else {
                     return true;
                 }
         }
-        if(auto potiuneA=dynamic_cast<Potiune*>(a.get())){
-            if(auto potiuneB=dynamic_cast<Potiune*>(b.get())){
+        if(auto potiuneA=dynamic_cast<const Potiune*>(a.get())){
+            if(auto potiuneB=dynamic_cast<const Potiune*>(b.get())){
                 return potiuneA->getviatavindecata() > potiuneB->getviatavindecata();
             }else{
                 return false;

@@ -22,9 +22,9 @@ template <typename T>
 void Inventar<T>::afisareinventar() const {
     for (const auto& ob : obiecte) {
         std::cout << ob->getnume() << " " << ob->getnumar() << ", ";
-        if (auto arma = dynamic_cast<Arma*>(ob.get()))
+        if (auto arma = dynamic_cast<const Arma*>(ob.get()))
             std::cout << "Putere bonus oferita: " << arma->getputerebonus() << std::endl;
-        if (auto potiune = dynamic_cast<Potiune*>(ob.get()))
+        if (auto potiune = dynamic_cast<const Potiune*>(ob.get()))
             std::cout << "Viata vindecata: " << potiune->getviatavindecata() << std::endl;
     }
 }

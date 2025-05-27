@@ -8,7 +8,7 @@ protected:
     int numar;
 public:
     Obiect(std::string n, int nr);
-    std::string getnume() const;
+    const std::string& getnume() const;
     int getnumar() const;
     void modificanumar();
     bool operator==(const Obiect& copie) const;
@@ -19,13 +19,13 @@ public:
 class Arma : public Obiect {
     int puterebonus;
 public:
-    Arma(std::string n, int nr, int p);
+    Arma(const std::string& n, int nr, int p);
     int getputerebonus() const;
 };
 
 class Potiune : public Obiect {
     int viatavindecata;
 public:
-    Potiune(std::string n, int nr, int v);
+    Potiune(const std::string& n, int nr, int v);
     int getviatavindecata() const;
 };

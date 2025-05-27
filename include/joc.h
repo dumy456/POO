@@ -14,7 +14,7 @@
 class Joc{
     public:
         Joc() = default;
-        void final(Inamic &rege, Inamic &strigoi, Inamic &urs, Inamic &bandit3, int finalfericit);
+        void final(const Inamic &rege,const Inamic &strigoi,const Inamic &urs,const Inamic &bandit3, int finalfericit);
         void start();
         ~Joc() = default;
 };
