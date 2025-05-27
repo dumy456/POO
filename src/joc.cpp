@@ -110,7 +110,7 @@ void Joc::start(){
                 std::cout<<"'Cu ce a afectat venirea mea acest regat...? Nu exista alta solutie...?'"<<std::endl;
                 std::cout<<"Daca vrei sa te sacrifici, scrie 'sacrificiu'."<<std::endl;
                 std::cout<<"Daca vrei sa continui lupta, intoarce-te la castel si afla adevarul."<<std::endl;
-                dezbaterea=1;
+                dezbaterea=1;   
             }
             if(locatiecurenta->getnume()=="Tronul Regal" && locatiecurenta->getvizitat()==0)
             {

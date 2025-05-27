@@ -2,8 +2,6 @@
 template <typename T>
 Inventar<T>::Inventar(int c) : capacitatemaxima(c) {}
 
-template <typename T>
-int Inventar<T>::getcapacitatemaxima() const { return capacitatemaxima; }
 
 template <typename T>
 std::vector<std::unique_ptr<T>>& Inventar<T>::getobiecte() { return obiecte; }

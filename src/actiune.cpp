@@ -303,7 +303,8 @@ void Actiune::turneu(Jucator &jucator1,Locatie* &locatiecurenta, Inamic &bandit1
         std::cout<<"Gasesti pe jos o potiune de viata mare si o sabie de diamant."<<std::endl;
         jucator1.getinventar().adaugaobiect(std::make_unique<Potiune>("Potiune de viata mare", 1, 50));
         jucator1.getinventar().adaugaobiect(std::make_unique<Arma>("Sabie de diamant", 1, 30));
-        locatiecurenta->setdescriere("Te afli in Tabara Banditilor, dar acum este mai linistita.");
+        locatiecurenta->setnume("Tabara Abandonata");
+        locatiecurenta->setdescriere("Te afli in Tabara Abandonata. Inainte se numea Tabara Banditilor, dar acum este mai linistita.");
         return;
     }
     else{
@@ -314,7 +315,8 @@ void Actiune::bataieurs(Jucator &jucator1, Inamic &urs,int &viatamax,Locatie* &l
     Actiune::batalie(jucator1, urs);      
     if(urs.getviata()==0)
     {
-        locatiecurenta->setdescriere("Te afli in Pestera Ursului, dar acum este mai linistita.");
+        locatiecurenta->setnume("Pestera Intunecata");
+        locatiecurenta->setdescriere("Te afli in Pestera Intunecata. Inainte se numea Pestera Ursului, dar acum este mai linistita.");
         std::cout<<"Ai invins ursul!"<<std::endl;
         std::cout<<"Te simti mai rezistent."<<std::endl;
         jucator1.setviata(125);
@@ -332,7 +334,8 @@ void Actiune::bataiestrigoi(Jucator &jucator1, Inamic &strigoi,int &viatamax,Loc
     Actiune::batalie(jucator1, strigoi);         
     if(strigoi.getviata()==0)
     {
-        locatiecurenta->setdescriere("Te afli in Padurea Strigoilor, dar acum este mai linistita.");
+        locatiecurenta->setnume("Padurea Linistita");
+        locatiecurenta->setdescriere("Te afli in Padurea Linistita. Inainte era Padurea Strigoilor, dar acum este mai linistita.");
         std::cout<<"Ai invins strigoiul!"<<std::endl;
         std::cout<<"Te simti mai rezistent."<<std::endl;
         jucator1.setviata(110);

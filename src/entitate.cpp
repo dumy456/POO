@@ -4,7 +4,6 @@ Entitate::Entitate(std::string n, int h, int s) : nume(n), viata(h), putere(s) {
 Entitate::Entitate() = default;
 std::string Entitate::getnume() const { return nume; }
 int Entitate::getviata() const { return viata; }
-int Entitate::getputere() const { return putere; }
 void Entitate::setputere(int s) { putere = s;}
 void Entitate::setviata(int v) { viata = v; }
 void Entitate::ranire(int contorranire) {
@@ -20,7 +19,6 @@ void Entitate::atac(Entitate &ent) {
 
 Jucator::Jucator(std::string n, int h, int s, int a) : Entitate(n, h, s), inventar(10), agilitate(a) {}
 Jucator::Jucator() : Entitate("", 100, 10), inventar(10), agilitate(3) {}
-int Jucator::getagilitate() const { return agilitate; }
 Inventar<Obiect>& Jucator::getinventar() { return inventar; }
 void Jucator::atac(Entitate &ent) {
     std::cout << nume << " ataca " << ent.getnume() << std::endl;

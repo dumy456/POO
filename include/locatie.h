@@ -13,7 +13,6 @@ public:
     Locatie(std::string n, std::string d);
     Locatie();
     std::string getnume() const;
-    std::string getdescriere() const;
     std::string setnume(std::string n);
     std::string setdescriere(std::string d);
     int setvizitat();

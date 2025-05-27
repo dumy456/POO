@@ -14,7 +14,6 @@ public:
     Entitate();
     std::string getnume() const;
     int getviata() const;
-    int getputere() const;
     void setputere( int s);
     void setviata(int v);
     void ranire(int contorranire);
@@ -29,7 +28,6 @@ int agilitate;
 public:
     Jucator(std::string n, int h, int s,int a);
     Jucator();
-    int getagilitate() const;
     Inventar<Obiect>& getinventar();
     const Inventar<Obiect>& getinventar() const;
     void atac(Entitate &ent) override;

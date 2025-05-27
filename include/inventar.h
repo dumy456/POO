@@ -11,7 +11,6 @@ std::vector<std::unique_ptr<T>> obiecte;
 int capacitatemaxima;
 public:
     Inventar(int c);
-    int getcapacitatemaxima() const;
     std::vector<std::unique_ptr<T>>& getobiecte();
     bool esteplin() const;
     void adaugaobiect(std::unique_ptr<T> ob);
